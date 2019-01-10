@@ -40,9 +40,9 @@ export const fetchJobs = (region, callback) => async (dispatch) => {   // changi
 
         callback();
 
-        console.log(data)
+        console.warn(data)
     } catch(e) {
-        console.error(e);
+        console.warn(e);
     }
 
 }

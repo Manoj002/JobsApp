@@ -71,7 +71,7 @@ export const facebookLogin = () => async dispatch => {  // as we are having only
     // rules of arrow function(removal of curly braces and return keyword)
     // instead of word function we are using arrow function
                         
-    let token = await AsyncStorage.getItem('fb_token');
+    //let token = await AsyncStorage.getItem('fb_token');
 
     if(token) {
         // if we got a token, we have to dispatch a fb login action so 
@@ -90,7 +90,7 @@ export const facebookLogin = () => async dispatch => {  // as we are having only
 const doFacebookLogin = async dispatch => {
     // result has various properties
     // we want only type(current status) and token
-    let {type, token} = await Facebook.logInWithReadPermissionsAsync('391589814651666', {
+    let {type, token} = await Facebook.logInWithReadPermissionsAsync('780366855641778', {
         permissions: ['public_profile']
     });
 

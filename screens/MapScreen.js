@@ -8,7 +8,6 @@ import * as actions from '../actions';
 class MapScreen extends React.Component {
 
     state = {
-        // mapLoaded: false,
         region: {
             latitude: 37,
             longitude: -122,
@@ -16,10 +15,6 @@ class MapScreen extends React.Component {
             longitudeDelta: 0.04
         } 
     }
-
-    // componentDidMount() {
-    //     this.setState({ mapLoaded: true })
-    // }
 
     onRegionChangeComplete = (region) => {
         this.setState({ region })
@@ -33,14 +28,6 @@ class MapScreen extends React.Component {
 
     render() {
 
-        // if(!this.state.mapLoaded) {
-        //     return(
-        //         <View style={{flex: 1, justifyContent: 'center'}}>
-        //             <ActivityIndicator size = 'large'/>
-        //         </View>
-        //     )
-        // }
-
         return(
 
             <View style={{flex: 1}}>
@@ -48,16 +35,34 @@ class MapScreen extends React.Component {
                     style={{flex: 1}}
                     initialRegion={this.state.region}
                     loadingEnabled={true}
+                    showsUserLocation
+                    provider="google"
+                    followsUserLocation
+                    showsPointsOfInterest
+                    scrollEnabled
                     loadingIndicatorColor='#007aff'
                     loadingBackgroundColor='#FFFFFF'
                     onRegionChangeComplete={this.onRegionChangeComplete}
                 />
-                <View style={styles.buttomContainer} >
-                    <Button 
-                        large
-                        title='Search here'
-                        backgroundColor="#009688"
-                        icon={{ name: 'search', size: 26 }}
+                <View style={styles.buttonContainer} >
+                    <Button
+                        title='Search for jobs'
+                        buttonStyle={{
+                            backgroundColor: "#fff",
+                            borderRadius: 8,
+                            elevation: 1,
+                            zIndex: 10
+                        }}
+                        textStyle={{
+                            color: "#007aff",
+                            fontSize: 18,
+                            fontWeight: "200"
+                        }}
+                        iconRight={{ 
+                            name: 'search', 
+                            size: 26, 
+                            color: "#007aff" 
+                        }}
                         onPress={this.onButtonPress}
                     />
                 </View>
@@ -67,11 +72,11 @@ class MapScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    buttomContainer: {
+    buttonContainer: {
         position: 'absolute',
         left: 0,
         right: 0,
-        bottom: 20
+        bottom: 40
     }
 })
 

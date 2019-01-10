@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { MapView } from 'expo';
-import { Card, Button } from 'react-native-elements';
+import { Card } from 'react-native-elements';
 import Swipe from '../Components/Swipe';
 
 class DeckScreen extends React.Component {
@@ -40,15 +40,37 @@ class DeckScreen extends React.Component {
 
     renderNoMoreCards() {
         return(
-            <Card title='No more jobs'>
-
-            </Card>
+            <View 
+                style={{
+                    justifyContent: "center",
+                    height: 50,
+                    width: "90%",
+                    marginLeft: 20,
+                    marginRight: 20,
+                    elevation: 1,
+                    zIndex: 10,
+                    borderRadius: 8
+                }} 
+            >
+                <Text
+                    style={{
+                        textAlign: "center",
+                        fontSize: 18,
+                        fontWeight: "200",
+                        color: "#000"
+                    }}
+                >
+                    No more jobs!!!
+                </Text>
+            </View>
         )
     }
 
     render() {
         return(
-            <View>
+            <View
+                style={styles.container}
+            >
                 <Swipe
                     data={this.props.jobs}
                     renderCard={this.renderCard}
@@ -64,6 +86,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 20
+    },
+    container: {
+        flex: 1,
+        justifyContent: "center"
     }
 })
 
